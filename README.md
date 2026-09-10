@@ -2,6 +2,9 @@
 
 เว็บรับ feedback จากคนในทีม ธีมดาร์ค — ถามว่าถ้าขาดไปจะลำบากระดับไหน (5 ระดับ) พร้อมข้อความและ summary ที่ทุกคนดูได้
 
+- **Live:** https://absence-feedback.vercel.app
+- **GitHub:** https://github.com/games1753/absence-feedback
+
 ## Features
 
 - ชื่อ (ไม่บังคับ)
@@ -11,7 +14,7 @@
 - คะแนนอยากร่วมงานอีก
 - กำแพง feedback เปิดให้ทุกคนอ่าน
 - Summary ค่าเฉลี่ย + การกระจาย
-- ข้อมูลเก็บถาวรใน `data/feedback.json` (ผ่าน GitHub API บน production)
+- ข้อมูลเก็บถาวรใน `data/feedback.json` บน GitHub
 
 ## Dev
 
