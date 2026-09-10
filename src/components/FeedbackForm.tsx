@@ -68,13 +68,13 @@ export function FeedbackForm({ onCreated }: Props) {
           transition={{ duration: 0.6 }}
         >
           <p className="font-[family-name:var(--font-mono)] text-xs tracking-[0.3em] text-amber-300/70 uppercase">
-            transmit
+            drop a note
           </p>
           <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight text-[#f4f1ec] sm:text-5xl">
-            เขียนถึงทีม
+            เขียนถึง Natakorn
           </h2>
           <p className="mt-3 max-w-lg text-zinc-400">
-            ใส่ชื่อหรือไม่ใส่ก็ได้ — ขอแค่จริงใจ
+            ใส่ชื่อหรือไม่ใส่ก็ได้ — สบายๆ
           </p>
         </motion.div>
 
@@ -91,7 +91,7 @@ export function FeedbackForm({ onCreated }: Props) {
                 ส่งแล้ว
               </p>
               <p className="mt-2 text-zinc-400">
-                Feedback ถูกเก็บถาวรแล้ว ทุกคนดูได้บนกำแพงด้านล่าง
+                ขึ้นกำแพงด้านล่างแล้ว เลื่อนไปอ่านกันได้เลย
               </p>
               <button
                 type="button"
@@ -236,7 +236,7 @@ export function FeedbackForm({ onCreated }: Props) {
               )}
 
               <button type="submit" className="btn-primary" disabled={busy}>
-                {busy ? "กำลังส่ง..." : "ส่ง Feedback ถาวร"}
+                {busy ? "กำลังส่ง..." : "ส่ง Feedback"}
               </button>
             </motion.form>
           )}

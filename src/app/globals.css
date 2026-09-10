@@ -84,6 +84,17 @@ body {
   animation-duration: 26s;
 }
 
+.orb-d {
+  top: 55%;
+  left: -10%;
+  width: 30vw;
+  height: 30vw;
+  background: radial-gradient(circle, #365314 0%, transparent 70%);
+  animation-delay: -3s;
+  animation-duration: 20s;
+  opacity: 0.35;
+}
+
 @keyframes drift {
   0%,
   100% {
@@ -95,6 +106,89 @@ body {
   66% {
     transform: translate3d(-3%, 4%, 0) scale(0.96);
   }
+}
+
+.scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.015) 2px,
+    rgba(255, 255, 255, 0.015) 4px
+  );
+  animation: scan-drift 12s linear infinite;
+}
+
+@keyframes scan-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 80px;
+  }
+}
+
+.grid-move {
+  background-image:
+    linear-gradient(rgba(94, 234, 212, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 234, 212, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  animation: grid-pan 24s linear infinite;
+}
+
+@keyframes grid-pan {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 64px 64px, 64px 64px;
+  }
+}
+
+.ring-pulse {
+  position: absolute;
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+}
+
+.float-speck {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #5eead4;
+  box-shadow: 0 0 12px rgba(94, 234, 212, 0.7);
+}
+
+.hero-glow {
+  position: absolute;
+  left: 10%;
+  bottom: 18%;
+  width: min(70vw, 520px);
+  height: min(40vw, 280px);
+  background: radial-gradient(ellipse, rgba(94, 234, 212, 0.18), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.orbit-ring {
+  width: 100%;
+  height: 100%;
+  border: 1px dashed rgba(251, 191, 36, 0.35);
+  border-radius: 9999px;
+}
+
+.orbit-dot {
+  position: absolute;
+  top: -4px;
+  left: calc(50% - 4px);
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #fbbf24;
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.8);
 }
 
 .noise {
@@ -213,13 +307,26 @@ body {
 }
 
 .level-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
   border-color: rgba(255, 255, 255, 0.2);
 }
 
 .level-btn-active {
   background: rgba(255, 255, 255, 0.05);
   color: #f4f1ec;
+  animation: level-pop 0.45s ease;
+}
+
+@keyframes level-pop {
+  0% {
+    transform: scale(0.94);
+  }
+  60% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .chip {
@@ -241,12 +348,24 @@ body {
 .chip-active {
   border-color: rgba(94, 234, 212, 0.55);
   background: rgba(94, 234, 212, 0.08);
+  animation: level-pop 0.4s ease;
 }
 
 .stat-block {
   padding: 1.4rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  animation: stat-glow 5.5s ease-in-out infinite;
+}
+
+@keyframes stat-glow {
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  50% {
+    border-color: rgba(94, 234, 212, 0.28);
+  }
 }
 
 .feedback-card {
@@ -255,6 +374,15 @@ body {
   background: rgba(12, 12, 16, 0.72);
   backdrop-filter: blur(10px);
   transition: border-color 0.25s ease, transform 0.25s ease;
+  animation: card-breathe 7s ease-in-out infinite;
+}
+
+.feedback-card:nth-child(2n) {
+  animation-delay: -2s;
+}
+
+.feedback-card:nth-child(3n) {
+  animation-delay: -4.5s;
 }
 
 .feedback-card:hover {
@@ -262,7 +390,47 @@ body {
   transform: translateY(-2px);
 }
 
+@keyframes card-breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(94, 234, 212, 0);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(94, 234, 212, 0.06);
+  }
+}
+
 ::selection {
   background: rgba(94, 234, 212, 0.35);
   color: #041016;
+}
+
+.marquee-wrap {
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-text {
+  padding-right: 2rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(161, 161, 170, 0.85);
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }

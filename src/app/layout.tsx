@@ -21,9 +21,8 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ABSENT — Team Feedback Archive",
-  description:
-    "เว็บรับ feedback จากคนที่ทำงาน ถ้าขาดไปจะลำบากแค่ไหน — เก็บถาวร ดูได้ทุกคน",
+  title: "FeedBack Natakorn",
+  description: "เว็บรับ feedback จากทีมงานถึง Natakorn — อ่านด้วยกันได้ทุกคน",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

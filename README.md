@@ -1,6 +1,6 @@
-# ABSENT
+# FeedBack Natakorn
 
-เว็บรับ feedback จากคนในทีม ธีมดาร์ค — ถามว่าถ้าขาดไปจะลำบากระดับไหน (5 ระดับ) พร้อมข้อความและ summary ที่ทุกคนดูได้
+เว็บรับ feedback จากทีมถึง Natakorn ธีมดาร์ค มี summary และกำแพงที่ทุกคนอ่านได้
 
 - **Live:** https://absence-feedback.vercel.app
 - **GitHub:** https://github.com/games1753/absence-feedback
@@ -14,7 +14,7 @@
 - คะแนนอยากร่วมงานอีก
 - กำแพง feedback เปิดให้ทุกคนอ่าน
 - Summary ค่าเฉลี่ย + การกระจาย
-- ข้อมูลเก็บถาวรใน `data/feedback.json` บน GitHub
+- ข้อมูลเก็บใน `data/feedback.json` บน GitHub
 
 ## Dev
 

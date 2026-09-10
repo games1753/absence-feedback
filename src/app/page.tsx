@@ -55,9 +55,9 @@ export default function Home() {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="font-[family-name:var(--font-display)] text-lg tracking-tight text-[#f4f1ec]"
+            className="font-[family-name:var(--font-display)] text-sm tracking-tight text-[#f4f1ec] sm:text-lg"
           >
-            ABSENT
+            FeedBack Natakorn
           </button>
           <nav className="flex items-center gap-1 text-sm text-zinc-400 sm:gap-2">
             <button type="button" className="nav-link" onClick={() => scrollToId("write")}>
@@ -78,18 +78,27 @@ export default function Home() {
           onWrite={() => scrollToId("write")}
           onWall={() => scrollToId("wall")}
         />
+        <div className="marquee-wrap border-y border-white/5 py-3" aria-hidden>
+          <div className="marquee-track">
+            {Array.from({ length: 2 }).map((_, copy) => (
+              <p key={copy} className="marquee-text">
+                FeedBack Natakorn · เขียนได้ แซวได้ ชมได้ · ดู summary ได้ · กำแพงเปิดให้อ่าน ·{" "}
+              </p>
+            ))}
+          </div>
+        </div>
         <FeedbackForm onCreated={onCreated} />
         {!loading && <SummaryPanel summary={summary} />}
         {!loading && <FeedbackWall items={items} />}
         {loading && (
           <p className="px-5 py-20 text-center text-zinc-500 sm:px-8">
-            กำลังโหลด archive...
+            กำลังโหลด...
           </p>
         )}
       </main>
 
       <footer className="border-t border-white/5 px-5 py-10 text-center text-xs text-zinc-600 sm:px-8">
-        ABSENT · feedback archive · ข้อมูลถูกเก็บถาวรให้อ่านได้ตลอดไป
+        FeedBack Natakorn · จากทีม ถึง Natakorn
       </footer>
     </>
   );

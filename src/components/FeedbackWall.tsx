@@ -36,7 +36,7 @@ export function SummaryPanel({ summary }: Props) {
             {
               label: "Feedback ทั้งหมด",
               value: String(summary.total),
-              sub: "รายการถาวร",
+              sub: "รายการทั้งหมด",
             },
             {
               label: "เฉลี่ยความลำบาก",
@@ -116,12 +116,12 @@ export function FeedbackWall({ items }: WallProps) {
           viewport={{ once: true }}
         >
           <p className="font-[family-name:var(--font-mono)] text-xs tracking-[0.3em] text-amber-300/70 uppercase">
-            open archive
+            the wall
           </p>
           <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight text-[#f4f1ec] sm:text-5xl">
             กำแพง Feedback
           </h2>
-          <p className="mt-3 text-zinc-400">ทุกคนอ่านได้ — เก็บไว้ไม่มีวันหาย</p>
+          <p className="mt-3 text-zinc-400">ใครก็เข้ามาอ่านได้</p>
         </motion.div>
 
         {items.length === 0 ? (
