@@ -9,6 +9,16 @@
       "vibe": "flow",
       "workAgain": 5,
       "createdAt": "2026-09-10T10:54:07.556Z"
+    },
+    {
+      "id": "92f74519-8211-442f-884b-2d35f5c4c401",
+      "name": "ไก่",
+      "missLevel": 1,
+      "message": "ไปไกลๆ",
+      "missMost": "กาก",
+      "vibe": "chill",
+      "workAgain": 1,
+      "createdAt": "2026-09-11T04:10:44.694Z"
     }
   ]
 }
