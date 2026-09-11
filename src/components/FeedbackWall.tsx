@@ -116,10 +116,10 @@ export function FeedbackWall({ items }: WallProps) {
           viewport={{ once: true }}
         >
           <p className="font-[family-name:var(--font-mono)] text-xs tracking-[0.3em] text-amber-300/70 uppercase">
-            the wall
+            the board
           </p>
           <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight text-[#f4f1ec] sm:text-5xl">
-            กำแพง Feedback
+            Feedback ทั้งหมด
           </h2>
           <p className="mt-3 text-zinc-400">ใครก็เข้ามาอ่านได้</p>
         </motion.div>

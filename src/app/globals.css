@@ -30,26 +30,13 @@ body {
 
 .brand-title {
   font-family: var(--font-display), sans-serif;
-  background: linear-gradient(120deg, #f4f1ec 20%, #5eead4 55%, #fbbf24 100%);
+  background-image: linear-gradient(120deg, #f4f1ec 18%, #5eead4 52%, #fbbf24 88%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: brand-shine 8s ease-in-out infinite;
-}
-
-.brand-word,
-.brand-letter {
-  background: linear-gradient(120deg, #f4f1ec 15%, #5eead4 50%, #fbbf24 90%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: brand-shine 8s ease-in-out infinite;
-}
-
-.brand-letter {
-  animation-duration: 5.5s;
+  -webkit-text-fill-color: transparent;
+  animation: brand-shine 10s ease-in-out infinite;
 }
 
 @keyframes brand-shine {
@@ -65,9 +52,8 @@ body {
 .orb {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(80px);
-  opacity: 0.45;
-  animation: drift 18s ease-in-out infinite;
+  filter: blur(72px);
+  opacity: 0.4;
 }
 
 .orb-a {
@@ -84,8 +70,6 @@ body {
   width: 42vw;
   height: 42vw;
   background: radial-gradient(circle, #7c2d12 0%, transparent 70%);
-  animation-delay: -6s;
-  animation-duration: 22s;
 }
 
 .orb-c {
@@ -94,52 +78,10 @@ body {
   width: 36vw;
   height: 36vw;
   background: radial-gradient(circle, #1e3a5f 0%, transparent 70%);
-  animation-delay: -12s;
-  animation-duration: 26s;
 }
 
 .orb-d {
-  top: 55%;
-  left: -10%;
-  width: 30vw;
-  height: 30vw;
-  background: radial-gradient(circle, #365314 0%, transparent 70%);
-  animation-delay: -3s;
-  animation-duration: 20s;
-  opacity: 0.35;
-}
-
-@keyframes drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  33% {
-    transform: translate3d(4%, -3%, 0) scale(1.05);
-  }
-  66% {
-    transform: translate3d(-3%, 4%, 0) scale(0.96);
-  }
-}
-
-.scanlines {
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(255, 255, 255, 0.015) 2px,
-    rgba(255, 255, 255, 0.015) 4px
-  );
-  animation: scan-drift 12s linear infinite;
-}
-
-@keyframes scan-drift {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 0 80px;
-  }
+  display: none;
 }
 
 .grid-move {
@@ -148,16 +90,6 @@ body {
     linear-gradient(90deg, rgba(94, 234, 212, 0.07) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
-  animation: grid-pan 24s linear infinite;
-}
-
-@keyframes grid-pan {
-  from {
-    background-position: 0 0, 0 0;
-  }
-  to {
-    background-position: 64px 64px, 64px 64px;
-  }
 }
 
 .ring-pulse {
@@ -191,23 +123,20 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: linear-gradient(
     160deg,
-    rgba(18, 22, 28, 0.85),
-    rgba(8, 10, 14, 0.72)
+    rgba(18, 22, 28, 0.92),
+    rgba(8, 10, 14, 0.88)
   );
-  backdrop-filter: blur(14px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
 .float-tag {
   padding: 0.4rem 0.75rem;
   border: 1px solid rgba(94, 234, 212, 0.25);
-  background: rgba(5, 5, 7, 0.65);
+  background: rgba(5, 5, 7, 0.75);
   color: #99f6e4;
   font-family: var(--font-mono), monospace;
   font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  backdrop-filter: blur(8px);
 }
 
 .hero-chip {
@@ -401,38 +330,11 @@ body {
   animation: level-pop 0.4s ease;
 }
 
-.stat-block {
-  padding: 1.4rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-  animation: stat-glow 5.5s ease-in-out infinite;
-}
-
-@keyframes stat-glow {
-  0%,
-  100% {
-    border-color: rgba(255, 255, 255, 0.08);
-  }
-  50% {
-    border-color: rgba(94, 234, 212, 0.28);
-  }
-}
-
 .feedback-card {
   padding: 1.35rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(12, 12, 16, 0.72);
-  backdrop-filter: blur(10px);
+  background: rgba(12, 12, 16, 0.85);
   transition: border-color 0.25s ease, transform 0.25s ease;
-  animation: card-breathe 7s ease-in-out infinite;
-}
-
-.feedback-card:nth-child(2n) {
-  animation-delay: -2s;
-}
-
-.feedback-card:nth-child(3n) {
-  animation-delay: -4.5s;
 }
 
 .feedback-card:hover {
@@ -440,14 +342,10 @@ body {
   transform: translateY(-2px);
 }
 
-@keyframes card-breathe {
-  0%,
-  100% {
-    box-shadow: 0 0 0 rgba(94, 234, 212, 0);
-  }
-  50% {
-    box-shadow: 0 0 28px rgba(94, 234, 212, 0.06);
-  }
+.stat-block {
+  padding: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
 }
 
 ::selection {

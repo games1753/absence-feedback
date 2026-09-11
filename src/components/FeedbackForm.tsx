@@ -60,7 +60,7 @@ export function FeedbackForm({ onCreated }: Props) {
   };
 
   return (
-    <ParallaxSection speed={50}>
+    <ParallaxSection speed={24}>
     <section id="write" className="scroll-mt-24 px-5 py-20 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-3xl">
         <motion.div
@@ -93,7 +93,7 @@ export function FeedbackForm({ onCreated }: Props) {
                 ส่งแล้ว
               </p>
               <p className="mt-2 text-zinc-400">
-                ขึ้นกำแพงด้านล่างแล้ว เลื่อนไปอ่านกันได้เลย
+                ขึ้นบอร์ดด้านล่างแล้ว เลื่อนไปอ่านกันได้เลย
               </p>
               <button
                 type="button"

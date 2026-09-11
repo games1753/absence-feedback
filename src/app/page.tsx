@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <>
       <CosmicBackground />
-      <header className="fixed top-0 right-0 left-0 z-40 border-b border-white/5 bg-[#050507]/70 backdrop-blur-md">
+      <header className="fixed top-0 right-0 left-0 z-40 border-b border-white/5 bg-[#050507]/85">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
           <button
             type="button"
@@ -68,7 +68,7 @@ export default function Home() {
               Summary
             </button>
             <button type="button" className="nav-link" onClick={() => scrollToId("wall")}>
-              กำแพง
+              ทั้งหมด
             </button>
           </nav>
         </div>
@@ -83,19 +83,19 @@ export default function Home() {
           <div className="marquee-track">
             {Array.from({ length: 2 }).map((_, copy) => (
               <p key={copy} className="marquee-text">
-                FeedBack Natakorn · เขียนได้ แซวได้ ชมได้ · ดู summary ได้ · กำแพงเปิดให้อ่าน ·{" "}
+                FeedBack Natakorn · เขียนได้ แซวได้ ชมได้ · ดู summary ได้ · เปิดอ่านได้ ·{" "}
               </p>
             ))}
           </div>
         </div>
         <FeedbackForm onCreated={onCreated} />
         {!loading && (
-          <ParallaxSection speed={60}>
+          <ParallaxSection speed={28}>
             <SummaryPanel summary={summary} />
           </ParallaxSection>
         )}
         {!loading && (
-          <ParallaxSection speed={90}>
+          <ParallaxSection speed={36}>
             <FeedbackWall items={items} />
           </ParallaxSection>
         )}
