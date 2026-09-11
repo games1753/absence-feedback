@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const ROWS = [
   "FEEDBACK GAMES — WRITE ROAST PRAISE — OPEN BOARD —",
-  "FROM THE TEAM — TO GAMES — MISS METER — VIBE CHECK —",
+  "FROM THE TEAM — TO GAMES — NOTES — SUMMARY —",
 ];
 
 export function CinemaMarquee() {
