@@ -25,5 +25,6 @@ export type FeedbackSummary = {
   avgMissLevel: number;
   avgWorkAgain: number;
   missDistribution: Record<1 | 2 | 3 | 4 | 5, number>;
+  workAgainDistribution: Record<1 | 2 | 3 | 4 | 5, number>;
   vibeCounts: Record<WorkVibe, number>;
 };

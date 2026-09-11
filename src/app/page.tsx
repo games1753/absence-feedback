@@ -13,6 +13,7 @@ const emptySummary: FeedbackSummary = {
   avgMissLevel: 0,
   avgWorkAgain: 0,
   missDistribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
+  workAgainDistribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
   vibeCounts: { fire: 0, flow: 0, chill: 0, sharp: 0, rare: 0 },
 };
 

@@ -1,19 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MISS_LEVELS, WORK_VIBES } from "@/lib/constants";
+import { MISS_LEVELS, WORK_AGAIN, WORK_VIBES } from "@/lib/constants";
 import type { Feedback, FeedbackSummary } from "@/lib/types";
+import { DonutChart } from "@/components/DonutChart";
 
 type Props = {
   summary: FeedbackSummary;
 };
 
 export function SummaryPanel({ summary }: Props) {
-  const maxMiss = Math.max(1, ...Object.values(summary.missDistribution));
-  const topVibe = (Object.entries(summary.vibeCounts) as [string, number][])
-    .sort((a, b) => b[1] - a[1])[0];
-  const vibeLabel =
-    WORK_VIBES.find((v) => v.id === topVibe?.[0])?.label ?? "—";
+  const missSlices = MISS_LEVELS.map((level) => ({
+    label: `${level.level}. ${level.label}`,
+    value: summary.missDistribution[level.level],
+    color: level.color,
+  }));
+
+  const vibeSlices = WORK_VIBES.map((vibe) => ({
+    label: vibe.label,
+    value: summary.vibeCounts[vibe.id],
+    color: vibe.color,
+  }));
+
+  const workSlices = WORK_AGAIN.map((item) => ({
+    label: `${item.level}. ${item.label}`,
+    value: summary.workAgainDistribution?.[item.level] ?? 0,
+    color: item.color,
+  }));
 
   return (
     <section id="summary" className="scroll-mt-24 px-5 py-16 sm:px-8 lg:px-12">
@@ -29,73 +42,63 @@ export function SummaryPanel({ summary }: Props) {
           <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight text-[#f4f1ec] sm:text-5xl">
             Summary
           </h2>
+          <p className="mt-3 text-zinc-400">
+            กราฟวงกลมจากทุกหัวข้อที่ให้เลือก · ทั้งหมด {summary.total} รายการ
+          </p>
         </motion.div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          {[
-            {
-              label: "Feedback ทั้งหมด",
-              value: String(summary.total),
-              sub: "รายการทั้งหมด",
-            },
-            {
-              label: "เฉลี่ยความลำบาก",
-              value: summary.total ? summary.avgMissLevel.toFixed(1) : "—",
-              sub: "จาก 5 ระดับ",
-            },
-            {
-              label: "อยากร่วมงานอีก",
-              value: summary.total ? summary.avgWorkAgain.toFixed(1) : "—",
-              sub: `Vibe ฮิต: ${vibeLabel}`,
-            },
-          ].map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="stat-block"
-            >
-              <p className="text-xs tracking-widest text-zinc-500 uppercase">
-                {stat.label}
-              </p>
-              <p className="mt-3 font-[family-name:var(--font-display)] text-5xl tracking-tight text-[#f4f1ec]">
-                {stat.value}
-              </p>
-              <p className="mt-2 text-sm text-zinc-500">{stat.sub}</p>
-            </motion.div>
-          ))}
-        </div>
+        <div className="mt-10 grid gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <DonutChart
+              title="ขาดไปจะลำบากระดับไหน"
+              subtitle={
+                summary.total
+                  ? `เฉลี่ย ${summary.avgMissLevel.toFixed(1)} / 5`
+                  : "ยังไม่มีข้อมูล"
+              }
+              slices={missSlices}
+              centerValue={summary.total ? summary.avgMissLevel.toFixed(1) : "0"}
+              centerLabel="เฉลี่ย"
+            />
+          </motion.div>
 
-        <div className="mt-8">
-          <p className="mb-4 text-sm text-zinc-400">การกระจายระดับความลำบาก</p>
-          <div className="space-y-3">
-            {MISS_LEVELS.map((level) => {
-              const count = summary.missDistribution[level.level];
-              const pct = summary.total ? (count / maxMiss) * 100 : 0;
-              return (
-                <div key={level.level} className="grid grid-cols-[7rem_1fr_2rem] items-center gap-3">
-                  <span className="text-sm text-zinc-300">
-                    {level.level}. {level.label}
-                  </span>
-                  <div className="h-2 overflow-hidden bg-white/5">
-                    <motion.div
-                      className="h-full"
-                      style={{ background: level.color }}
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${pct}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    />
-                  </div>
-                  <span className="text-right font-[family-name:var(--font-mono)] text-xs text-zinc-500">
-                    {count}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.06 }}
+          >
+            <DonutChart
+              title="Vibe ตอนทำงานด้วยกัน"
+              subtitle="สัดส่วนแต่ละ vibe"
+              slices={vibeSlices}
+              centerValue={String(summary.total)}
+              centerLabel="โหวต"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.12 }}
+          >
+            <DonutChart
+              title="อยากร่วมงานอีกไหม"
+              subtitle={
+                summary.total
+                  ? `เฉลี่ย ${summary.avgWorkAgain.toFixed(1)} / 5`
+                  : "ยังไม่มีข้อมูล"
+              }
+              slices={workSlices}
+              centerValue={summary.total ? summary.avgWorkAgain.toFixed(1) : "0"}
+              centerLabel="เฉลี่ย"
+            />
+          </motion.div>
         </div>
       </div>
     </section>

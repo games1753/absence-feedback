@@ -19,6 +19,13 @@ function summarize(items: Feedback[]): FeedbackSummary {
     4: 0,
     5: 0,
   };
+  const workAgainDistribution: FeedbackSummary["workAgainDistribution"] = {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+  };
   const vibeCounts: FeedbackSummary["vibeCounts"] = {
     fire: 0,
     flow: 0,
@@ -33,6 +40,7 @@ function summarize(items: Feedback[]): FeedbackSummary {
       avgMissLevel: 0,
       avgWorkAgain: 0,
       missDistribution,
+      workAgainDistribution,
       vibeCounts,
     };
   }
@@ -43,6 +51,7 @@ function summarize(items: Feedback[]): FeedbackSummary {
     missSum += item.missLevel;
     workSum += item.workAgain;
     missDistribution[item.missLevel] += 1;
+    workAgainDistribution[item.workAgain] += 1;
     vibeCounts[item.vibe] += 1;
   }
 
@@ -51,6 +60,7 @@ function summarize(items: Feedback[]): FeedbackSummary {
     avgMissLevel: Math.round((missSum / items.length) * 10) / 10,
     avgWorkAgain: Math.round((workSum / items.length) * 10) / 10,
     missDistribution,
+    workAgainDistribution,
     vibeCounts,
   };
 }
