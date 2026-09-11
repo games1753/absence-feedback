@@ -12,6 +12,9 @@ import { IntroOverlay } from "@/components/IntroOverlay";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { Reveal } from "@/components/Reveal";
 import { CinemaMarquee } from "@/components/CinemaMarquee";
+import { SlashBanner } from "@/components/SlashBanner";
+import { LevelRail } from "@/components/LevelRail";
+import { ManifestoStrip } from "@/components/ManifestoStrip";
 import type { Feedback, FeedbackSummary } from "@/lib/types";
 
 const emptySummary: FeedbackSummary = {
@@ -93,8 +96,16 @@ export default function Home() {
         <CinemaMarquee />
 
         <Reveal>
+          <LevelRail />
+        </Reveal>
+
+        <SlashBanner onWrite={() => scrollToId("write")} />
+
+        <Reveal>
           <FeedbackForm onCreated={onCreated} />
         </Reveal>
+
+        <ManifestoStrip />
 
         {!loading && (
           <Reveal delay={0.05}>

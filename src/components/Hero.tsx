@@ -9,6 +9,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { MagneticButton } from "@/components/MagneticButton";
+import { FloatingPolaroids } from "@/components/FloatingPolaroids";
 
 type Props = {
   onWrite: () => void;
@@ -43,6 +44,7 @@ export function Hero({ onWrite, onWall }: Props) {
       className="relative flex min-h-[100svh] items-center overflow-hidden px-5 pt-28 pb-16 sm:px-8 lg:px-12"
     >
       <motion.div className="pointer-events-none absolute inset-0" style={{ background: spot }} />
+      <FloatingPolaroids />
 
       {/* giant ghost typography — Jamie McKaye energy */}
       <motion.div

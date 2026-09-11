@@ -165,6 +165,87 @@ body {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
 }
 
+.polaroid {
+  width: 132px;
+  padding: 0.85rem 0.9rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(165deg, rgba(18, 20, 26, 0.95), rgba(8, 9, 12, 0.92));
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.slash-band {
+  position: relative;
+  margin: 0 auto;
+  max-width: 100%;
+  transform: skewY(-3deg);
+  background: linear-gradient(120deg, #fbbf24 0%, #5eead4 55%, #2dd4bf 100%);
+  box-shadow: 0 24px 60px rgba(94, 234, 212, 0.18);
+}
+
+.slash-band-inner {
+  transform: skewY(3deg);
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3.2rem 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .slash-band-inner {
+    padding: 3.8rem 2rem;
+  }
+}
+
+.btn-ink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.5rem;
+  border: none;
+  background: #041016;
+  color: #f4f1ec;
+  font-weight: 700;
+  cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-ink:hover {
+  background: #0b1220;
+  transform: translateY(-1px);
+}
+
+.level-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(180px, 1fr);
+  gap: 0.85rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+}
+
+.level-tile {
+  min-height: 180px;
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.level-tile:hover {
+  border-color: rgba(94, 234, 212, 0.35);
+  transform: translateY(-3px);
+}
+
+.feedback-card {
+  transform-style: preserve-3d;
+}
+
+.feedback-card:hover {
+  border-color: rgba(94, 234, 212, 0.28);
+  transform: translateY(-4px) rotateX(2deg) rotateY(-2deg);
+}
+
 .float-tag {
   padding: 0.4rem 0.75rem;
   border: 1px solid rgba(94, 234, 212, 0.25);
