@@ -15,13 +15,15 @@ export function SectionHead({ index, eyebrow, title, desc }: Props) {
           <span className="font-[family-name:var(--font-mono)] text-[11px] tracking-[0.28em] text-teal-300/70 uppercase">
             {eyebrow}
           </span>
-          <span className="h-px w-8 bg-white/15" />
+          <span className="section-line" />
           <span className="font-[family-name:var(--font-mono)] text-[11px] tracking-[0.2em] text-zinc-600">
             {index}
           </span>
         </div>
         <h2 className="font-[family-name:var(--font-display)] text-4xl tracking-tight text-[#f4f1ec] sm:text-5xl">
-          {title}
+          <span className="inline-block overflow-hidden align-bottom">
+            <span className="section-title-anim inline-block">{title}</span>
+          </span>
         </h2>
         {desc && <p className="mt-3 max-w-lg text-zinc-400">{desc}</p>}
       </div>

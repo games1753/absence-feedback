@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { CosmicBackground } from "@/components/CosmicBackground";
 import { Hero } from "@/components/Hero";
 import { FeedbackForm } from "@/components/FeedbackForm";
@@ -12,9 +13,8 @@ import { IntroOverlay } from "@/components/IntroOverlay";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { Reveal } from "@/components/Reveal";
 import { CinemaMarquee } from "@/components/CinemaMarquee";
-import { SlashBanner } from "@/components/SlashBanner";
-import { LevelRail } from "@/components/LevelRail";
 import { ManifestoStrip } from "@/components/ManifestoStrip";
+import { EnergyLines } from "@/components/EnergyLines";
 import type { Feedback, FeedbackSummary } from "@/lib/types";
 
 const emptySummary: FeedbackSummary = {
@@ -28,6 +28,51 @@ const emptySummary: FeedbackSummary = {
 
 function scrollToId(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
+
+function FloatingNav({
+  onTop,
+  onWrite,
+  onSummary,
+  onWall,
+}: {
+  onTop: () => void;
+  onWrite: () => void;
+  onSummary: () => void;
+  onWall: () => void;
+}) {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 80], [0, -2]);
+  const opacity = useTransform(scrollY, [0, 40], [0.92, 1]);
+
+  return (
+    <motion.header
+      style={{ y, opacity }}
+      className="fixed top-4 right-0 left-0 z-40 px-4 sm:px-6"
+    >
+      <div className="glass-nav mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-5">
+        <button
+          type="button"
+          onClick={onTop}
+          className="font-[family-name:var(--font-display)] text-sm tracking-tight text-[#f4f1ec] sm:text-lg"
+          data-cursor="hover"
+        >
+          FeedBack Natakorn
+        </button>
+        <nav className="flex items-center gap-1 text-sm text-zinc-400 sm:gap-2">
+          <button type="button" className="nav-link" onClick={onWrite}>
+            เขียน
+          </button>
+          <button type="button" className="nav-link" onClick={onSummary}>
+            Summary
+          </button>
+          <button type="button" className="nav-link" onClick={onWall}>
+            ทั้งหมด
+          </button>
+        </nav>
+      </div>
+    </motion.header>
+  );
 }
 
 export default function Home() {
@@ -62,30 +107,14 @@ export default function Home() {
       <CustomCursor />
       <ScrollProgress />
       <CosmicBackground />
+      <EnergyLines />
 
-      <header className="fixed top-4 right-0 left-0 z-40 px-4 sm:px-6">
-        <div className="glass-nav mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-5">
-          <button
-            type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="font-[family-name:var(--font-display)] text-sm tracking-tight text-[#f4f1ec] sm:text-lg"
-            data-cursor="hover"
-          >
-            FeedBack Natakorn
-          </button>
-          <nav className="flex items-center gap-1 text-sm text-zinc-400 sm:gap-2">
-            <button type="button" className="nav-link" onClick={() => scrollToId("write")}>
-              เขียน
-            </button>
-            <button type="button" className="nav-link" onClick={() => scrollToId("summary")}>
-              Summary
-            </button>
-            <button type="button" className="nav-link" onClick={() => scrollToId("wall")}>
-              ทั้งหมด
-            </button>
-          </nav>
-        </div>
-      </header>
+      <FloatingNav
+        onTop={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        onWrite={() => scrollToId("write")}
+        onSummary={() => scrollToId("summary")}
+        onWall={() => scrollToId("wall")}
+      />
 
       <main className="flex-1">
         <Hero
@@ -94,12 +123,6 @@ export default function Home() {
         />
 
         <CinemaMarquee />
-
-        <Reveal>
-          <LevelRail />
-        </Reveal>
-
-        <SlashBanner onWrite={() => scrollToId("write")} />
 
         <Reveal>
           <FeedbackForm onCreated={onCreated} />

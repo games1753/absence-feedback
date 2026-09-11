@@ -121,10 +121,10 @@ export function FeedbackForm({ onCreated }: Props) {
                   ขาดผมไปจะลำบากระดับไหน?
                 </legend>
                 <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-5">
-                  {MISS_LEVELS.map((item) => {
+                  {MISS_LEVELS.map((item, i) => {
                     const active = missLevel === item.level;
                     return (
-                      <button
+                      <motion.button
                         key={item.level}
                         type="button"
                         onClick={() => setMissLevel(item.level)}
@@ -137,6 +137,12 @@ export function FeedbackForm({ onCreated }: Props) {
                               }
                             : undefined
                         }
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.05 }}
+                        whileHover={{ y: -3 }}
+                        whileTap={{ scale: 0.97 }}
                       >
                         <span
                           className="font-[family-name:var(--font-mono)] text-2xl font-semibold"
@@ -150,7 +156,7 @@ export function FeedbackForm({ onCreated }: Props) {
                         <span className="mt-0.5 text-[11px] text-zinc-500">
                           {item.hint}
                         </span>
-                      </button>
+                      </motion.button>
                     );
                   })}
                 </div>
@@ -159,18 +165,24 @@ export function FeedbackForm({ onCreated }: Props) {
               <fieldset>
                 <legend className="field-label">Vibe ตอนทำงานด้วยกัน</legend>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {WORK_VIBES.map((item) => {
+                  {WORK_VIBES.map((item, i) => {
                     const active = vibe === item.id;
                     return (
-                      <button
+                      <motion.button
                         key={item.id}
                         type="button"
                         onClick={() => setVibe(item.id)}
                         className={`chip ${active ? "chip-active" : ""}`}
+                        initial={{ opacity: 0, scale: 0.92 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.08 + i * 0.04 }}
+                        whileHover={{ y: -2 }}
+                        whileTap={{ scale: 0.96 }}
                       >
                         <span>{item.label}</span>
                         <span className="text-zinc-500">{item.tag}</span>
-                      </button>
+                      </motion.button>
                     );
                   })}
                 </div>
@@ -203,14 +215,20 @@ export function FeedbackForm({ onCreated }: Props) {
               <fieldset>
                 <legend className="field-label">อยากร่วมงานอีกไหม?</legend>
                 <div className="mt-4 grid grid-cols-5 gap-2">
-                  {WORK_AGAIN.map((item) => {
+                  {WORK_AGAIN.map((item, i) => {
                     const active = workAgain === item.level;
                     return (
-                      <button
+                      <motion.button
                         key={item.level}
                         type="button"
                         onClick={() => setWorkAgain(item.level)}
                         className={`level-btn py-4 ${active ? "level-btn-active" : ""}`}
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 + i * 0.04 }}
+                        whileHover={{ y: -2 }}
+                        whileTap={{ scale: 0.97 }}
                       >
                         <span className="font-[family-name:var(--font-mono)] text-lg">
                           {item.level}
@@ -218,7 +236,7 @@ export function FeedbackForm({ onCreated }: Props) {
                         <span className="mt-1 text-[11px] text-zinc-400">
                           {item.label}
                         </span>
-                      </button>
+                      </motion.button>
                     );
                   })}
                 </div>

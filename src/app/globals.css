@@ -144,12 +144,100 @@ body {
   background:
     linear-gradient(165deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
   padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(94, 234, 212, 0.08) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  animation: form-sheen 5.5s ease-in-out infinite;
+}
+
+@keyframes form-sheen {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
 }
 
 @media (min-width: 640px) {
   .form-shell {
     padding: 2rem;
   }
+}
+
+.section-line {
+  display: inline-block;
+  height: 1px;
+  width: 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  transform-origin: left center;
+  animation: section-line-draw 0.8s ease forwards;
+}
+
+@keyframes section-line-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.section-title-anim {
+  animation: title-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes title-rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.energy-line {
+  position: absolute;
+  display: block;
+  opacity: 0.35;
+}
+
+.energy-line-a {
+  top: 28%;
+  left: 0;
+  width: 28%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.7), transparent);
+}
+
+.energy-line-b {
+  top: 68%;
+  left: 0;
+  width: 34%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.55), transparent);
+}
+
+.energy-line-c {
+  top: 0;
+  left: 62%;
+  width: 1px;
+  height: 26%;
+  background: linear-gradient(180deg, transparent, rgba(94, 234, 212, 0.45), transparent);
 }
 
 .hero-panel {
