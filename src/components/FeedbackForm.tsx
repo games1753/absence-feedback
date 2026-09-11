@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MISS_LEVELS, WORK_AGAIN, WORK_VIBES } from "@/lib/constants";
 import type { Feedback, WorkVibe } from "@/lib/types";
 import { ParallaxSection } from "@/components/ParallaxSection";
+import { SectionHead } from "@/components/SectionHead";
+import { MagneticButton } from "@/components/MagneticButton";
 
 type Props = {
   onCreated: (items: Feedback[]) => void;
@@ -61,25 +63,16 @@ export function FeedbackForm({ onCreated }: Props) {
 
   return (
     <ParallaxSection speed={24}>
-    <section id="write" className="scroll-mt-24 px-5 py-20 sm:px-8 lg:px-12">
+    <section id="write" className="scroll-mt-24 px-5 py-24 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="font-[family-name:var(--font-mono)] text-xs tracking-[0.3em] text-amber-300/70 uppercase">
-            drop a note
-          </p>
-          <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight text-[#f4f1ec] sm:text-5xl">
-            เขียนถึง Natakorn
-          </h2>
-          <p className="mt-3 max-w-lg text-zinc-400">
-            ใส่ชื่อหรือไม่ใส่ก็ได้ — สบายๆ
-          </p>
-        </motion.div>
+        <SectionHead
+          index="01"
+          eyebrow="drop a note"
+          title="เขียนถึง Natakorn"
+          desc="ใส่ชื่อหรือไม่ใส่ก็ได้ — สบายๆ"
+        />
 
+        <div className="form-shell">
         <AnimatePresence mode="wait">
           {done ? (
             <motion.div
@@ -87,7 +80,7 @@ export function FeedbackForm({ onCreated }: Props) {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              className="mt-12 border border-teal-400/25 bg-teal-400/5 p-8 backdrop-blur-sm"
+              className="border border-teal-400/25 bg-teal-400/5 p-8"
             >
               <p className="font-[family-name:var(--font-display)] text-3xl text-teal-300">
                 ส่งแล้ว
@@ -95,13 +88,13 @@ export function FeedbackForm({ onCreated }: Props) {
               <p className="mt-2 text-zinc-400">
                 ขึ้นบอร์ดด้านล่างแล้ว เลื่อนไปอ่านกันได้เลย
               </p>
-              <button
+              <MagneticButton
                 type="button"
                 className="btn-ghost mt-6"
                 onClick={() => setDone(false)}
               >
                 เขียนอีกอัน
-              </button>
+              </MagneticButton>
             </motion.div>
           ) : (
             <motion.form
@@ -110,7 +103,7 @@ export function FeedbackForm({ onCreated }: Props) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mt-12 space-y-10"
+              className="space-y-10"
             >
               <label className="block">
                 <span className="field-label">ชื่อ (ไม่บังคับ)</span>
@@ -237,12 +230,13 @@ export function FeedbackForm({ onCreated }: Props) {
                 </p>
               )}
 
-              <button type="submit" className="btn-primary" disabled={busy}>
+              <MagneticButton type="submit" className="btn-primary" disabled={busy}>
                 {busy ? "กำลังส่ง..." : "ส่ง Feedback"}
-              </button>
+              </MagneticButton>
             </motion.form>
           )}
         </AnimatePresence>
+        </div>
       </div>
     </section>
     </ParallaxSection>

@@ -11,6 +11,7 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { IntroOverlay } from "@/components/IntroOverlay";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { Reveal } from "@/components/Reveal";
+import { CinemaMarquee } from "@/components/CinemaMarquee";
 import type { Feedback, FeedbackSummary } from "@/lib/types";
 
 const emptySummary: FeedbackSummary = {
@@ -59,8 +60,8 @@ export default function Home() {
       <ScrollProgress />
       <CosmicBackground />
 
-      <header className="fixed top-0 right-0 left-0 z-40 border-b border-white/5 bg-[#050507]/85">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+      <header className="fixed top-4 right-0 left-0 z-40 px-4 sm:px-6">
+        <div className="glass-nav mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-5">
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -89,15 +90,7 @@ export default function Home() {
           onWall={() => scrollToId("wall")}
         />
 
-        <div className="marquee-wrap border-y border-white/5 py-3" aria-hidden>
-          <div className="marquee-track">
-            {Array.from({ length: 2 }).map((_, copy) => (
-              <p key={copy} className="marquee-text">
-                FeedBack Natakorn · เขียนได้ แซวได้ ชมได้ · ดู summary ได้ · เปิดอ่านได้ ·{" "}
-              </p>
-            ))}
-          </div>
-        </div>
+        <CinemaMarquee />
 
         <Reveal>
           <FeedbackForm onCreated={onCreated} />
@@ -105,7 +98,7 @@ export default function Home() {
 
         {!loading && (
           <Reveal delay={0.05}>
-            <ParallaxSection speed={28}>
+            <ParallaxSection speed={24}>
               <SummaryPanel summary={summary} />
             </ParallaxSection>
           </Reveal>
@@ -113,7 +106,7 @@ export default function Home() {
 
         {!loading && (
           <Reveal delay={0.08}>
-            <ParallaxSection speed={36}>
+            <ParallaxSection speed={30}>
               <FeedbackWall items={items} />
             </ParallaxSection>
           </Reveal>
@@ -126,8 +119,13 @@ export default function Home() {
         )}
       </main>
 
-      <footer className="border-t border-white/5 px-5 py-10 text-center text-xs text-zinc-600 sm:px-8">
-        FeedBack Natakorn · จากทีม ถึง Natakorn
+      <footer className="border-t border-white/5 px-5 py-12 text-center sm:px-8">
+        <p className="font-[family-name:var(--font-display)] text-2xl tracking-tight text-white/15">
+          FeedBack Natakorn
+        </p>
+        <p className="mt-3 text-xs tracking-wide text-zinc-600">
+          จากทีม ถึง Natakorn
+        </p>
       </footer>
     </SmoothScroll>
   );

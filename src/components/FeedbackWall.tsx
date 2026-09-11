@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MISS_LEVELS, WORK_AGAIN, WORK_VIBES } from "@/lib/constants";
 import type { Feedback, FeedbackSummary } from "@/lib/types";
 import { DonutChart } from "@/components/DonutChart";
+import { SectionHead } from "@/components/SectionHead";
 
 type Props = {
   summary: FeedbackSummary;
@@ -29,25 +30,16 @@ export function SummaryPanel({ summary }: Props) {
   }));
 
   return (
-    <section id="summary" className="scroll-mt-24 px-5 py-16 sm:px-8 lg:px-12">
+    <section id="summary" className="scroll-mt-24 px-5 py-24 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-5xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <p className="font-[family-name:var(--font-mono)] text-xs tracking-[0.3em] text-teal-300/70 uppercase">
-            pulse check
-          </p>
-          <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight text-[#f4f1ec] sm:text-5xl">
-            Summary
-          </h2>
-          <p className="mt-3 text-zinc-400">
-            กราฟวงกลมจากทุกหัวข้อที่ให้เลือก · ทั้งหมด {summary.total} รายการ
-          </p>
-        </motion.div>
+        <SectionHead
+          index="02"
+          eyebrow="pulse check"
+          title="Summary"
+          desc={`กราฟวงกลมจากทุกหัวข้อที่ให้เลือก · ทั้งหมด ${summary.total} รายการ`}
+        />
 
-        <div className="mt-10 grid gap-4">
+        <div className="grid gap-5">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -111,26 +103,19 @@ type WallProps = {
 
 export function FeedbackWall({ items }: WallProps) {
   return (
-    <section id="wall" className="scroll-mt-24 px-5 py-20 sm:px-8 lg:px-12">
+    <section id="wall" className="scroll-mt-24 px-5 py-24 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-5xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <p className="font-[family-name:var(--font-mono)] text-xs tracking-[0.3em] text-amber-300/70 uppercase">
-            the board
-          </p>
-          <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight text-[#f4f1ec] sm:text-5xl">
-            Feedback ทั้งหมด
-          </h2>
-          <p className="mt-3 text-zinc-400">ใครก็เข้ามาอ่านได้</p>
-        </motion.div>
+        <SectionHead
+          index="03"
+          eyebrow="the board"
+          title="Feedback ทั้งหมด"
+          desc="ใครก็เข้ามาอ่านได้"
+        />
 
         {items.length === 0 ? (
-          <p className="mt-12 text-zinc-500">ยังไม่มี feedback — เป็นคนแรกสิ</p>
+          <p className="mt-4 text-zinc-500">ยังไม่มี feedback — เป็นคนแรกสิ</p>
         ) : (
-          <div className="mt-12 columns-1 gap-4 sm:columns-2">
+          <div className="columns-1 gap-4 sm:columns-2">
             {items.map((item, index) => {
               const miss = MISS_LEVELS.find((m) => m.level === item.missLevel);
               const vibe = WORK_VIBES.find((v) => v.id === item.vibe);
