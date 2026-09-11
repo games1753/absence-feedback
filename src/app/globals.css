@@ -348,9 +348,84 @@ body {
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
 }
 
-::selection {
-  background: rgba(94, 234, 212, 0.35);
-  color: #041016;
+html.has-cursor,
+html.has-cursor body,
+html.has-cursor a,
+html.has-cursor button {
+  cursor: none !important;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 9999px;
+  background: #f4f1ec;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border-radius: 9999px;
+  border: 1px solid rgba(244, 241, 236, 0.35);
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 2px;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, #5eead4, #fbbf24);
+}
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #050507;
+}
+
+.intro-inner {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.intro-bar {
+  height: 2px;
+  width: min(280px, 60vw);
+  margin-inline: auto;
+  transform-origin: left center;
+  background: linear-gradient(90deg, #5eead4, #fbbf24);
+}
+
+/* Lenis recommended */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
 .marquee-wrap {
