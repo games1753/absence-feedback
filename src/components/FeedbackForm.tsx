@@ -68,7 +68,7 @@ export function FeedbackForm({ onCreated }: Props) {
         <SectionHead
           index="01"
           eyebrow="drop a note"
-          title="เขียนถึง Natakorn"
+          title="เขียนถึง Games"
           desc="ใส่ชื่อหรือไม่ใส่ก็ได้ — สบายๆ"
         />
 

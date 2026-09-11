@@ -41,7 +41,7 @@ export function IntroOverlay() {
                 animate={{ y: "0%" }}
                 transition={{ delay: 0.25, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               >
-                FeedBack Natakorn
+                FeedBack Games
               </motion.h2>
             </div>
             <motion.div

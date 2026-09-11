@@ -57,7 +57,7 @@ function FloatingNav({
           className="font-[family-name:var(--font-display)] text-sm tracking-tight text-[#f4f1ec] sm:text-lg"
           data-cursor="hover"
         >
-          FeedBack Natakorn
+          FeedBack Games
         </button>
         <nav className="flex items-center gap-1 text-sm text-zinc-400 sm:gap-2">
           <button type="button" className="nav-link" onClick={onWrite}>
@@ -155,10 +155,10 @@ export default function Home() {
 
       <footer className="border-t border-white/5 px-5 py-12 text-center sm:px-8">
         <p className="font-[family-name:var(--font-display)] text-2xl tracking-tight text-white/15">
-          FeedBack Natakorn
+          FeedBack Games
         </p>
         <p className="mt-3 text-xs tracking-wide text-zinc-600">
-          จากทีม ถึง Natakorn
+          จากทีม ถึง Games
         </p>
       </footer>
     </SmoothScroll>

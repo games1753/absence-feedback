@@ -1,6 +1,6 @@
-# FeedBack Natakorn
+# FeedBack Games
 
-เว็บรับ feedback จากทีมถึง Natakorn ธีมดาร์ค มี summary และกำแพงที่ทุกคนอ่านได้
+เว็บรับ feedback จากทีมถึง Games ธีมดาร์ค มี summary และกำแพงที่ทุกคนอ่านได้
 
 - **Live:** https://absence-feedback.vercel.app
 - **GitHub:** https://github.com/games1753/absence-feedback

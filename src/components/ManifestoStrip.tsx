@@ -31,7 +31,7 @@ export function ManifestoStrip() {
           style={{ x: x2 }}
           className="font-[family-name:var(--font-display)] text-[clamp(3.5rem,14vw,10rem)] leading-none font-bold tracking-[-0.06em] whitespace-nowrap text-teal-300/[0.1]"
         >
-          NATAKORN · TEAM SIGNAL · OPEN BOARD · NATAKORN · TEAM SIGNAL
+          GAMES · TEAM SIGNAL · OPEN BOARD · GAMES · TEAM SIGNAL
         </motion.p>
       </motion.div>
     </section>

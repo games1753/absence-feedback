@@ -21,8 +21,8 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FeedBack Natakorn",
-  description: "เว็บรับ feedback จากทีมงานถึง Natakorn — อ่านด้วยกันได้ทุกคน",
+  title: "FeedBack Games",
+  description: "เว็บรับ feedback จากทีมงานถึง Games — อ่านด้วยกันได้ทุกคน",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

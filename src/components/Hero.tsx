@@ -76,7 +76,7 @@ export function Hero({ onWrite, onWall }: Props) {
                 animate={{ y: "0%" }}
                 transition={{ delay: 2.05, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
               >
-                from the team · to Natakorn
+                from the team · to Games
               </motion.p>
             </div>
           </div>
@@ -99,7 +99,7 @@ export function Hero({ onWrite, onWall }: Props) {
                 animate={{ y: "0%" }}
                 transition={{ delay: 2.22, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               >
-                Natakorn
+                Games
               </motion.span>
             </span>
           </h1>
@@ -177,7 +177,7 @@ export function Hero({ onWrite, onWall }: Props) {
                   _
                 </motion.span>
               </p>
-              <p className="mt-3 text-sm text-zinc-400">ช่องทางส่งถึง Natakorn</p>
+              <p className="mt-3 text-sm text-zinc-400">ช่องทางส่งถึง Games</p>
               <div className="mt-6 space-y-2.5">
                 {[78, 52, 91, 64].map((w, i) => (
                   <motion.div
