@@ -2,7 +2,7 @@
 
 เว็บรับ feedback จากทีมถึง Games ธีมดาร์ค มี summary และกำแพงที่ทุกคนอ่านได้
 
-- **Live:** https://absence-feedback.vercel.app
+- **Live:** https://feedback-games.vercel.app
 - **GitHub:** https://github.com/games1753/absence-feedback
 
 ## Features
