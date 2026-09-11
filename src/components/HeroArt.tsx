@@ -2,102 +2,135 @@
 
 import { motion } from "framer-motion";
 
-/** Side art — Jesy Lu / League Design inspired, no fake dashboard */
+/** Stacked glass notes — Apple / Arc card energy, real message previews */
+const NOTES = [
+  {
+    from: "ทีม",
+    vibe: "ไฟลุก",
+    body: "ขาดแล้วประชุมเงียบทันที",
+    rot: -11,
+    y: "8%",
+    x: "10%",
+    z: 1,
+    delay: 2.35,
+  },
+  {
+    from: "anonymous",
+    vibe: "ลื่นไหล",
+    body: "ทำงานด้วยแล้วรู้สึกเบา",
+    rot: 7,
+    y: "28%",
+    x: "28%",
+    z: 3,
+    delay: 2.48,
+  },
+  {
+    from: "เพื่อน",
+    vibe: "หายาก",
+    body: "อยากร่วมทีมอีกรอบแน่นอน",
+    rot: -4,
+    y: "48%",
+    x: "6%",
+    z: 2,
+    delay: 2.58,
+  },
+];
+
+const RING = ["MISS", "VIBE", "AGAIN", "NOTES", "TEAM", "GAMES"];
+
 export function HeroArt() {
   return (
     <div className="hero-art absolute inset-0 overflow-hidden">
-      {/* atmospheric wash */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(94,234,212,0.22),transparent_50%),radial-gradient(ellipse_at_80%_85%,rgba(251,191,36,0.16),transparent_45%),linear-gradient(160deg,#0a0c10,#050507_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_35%,rgba(94,234,212,0.2),transparent_42%),radial-gradient(circle_at_20%_80%,rgba(251,191,36,0.12),transparent_40%),linear-gradient(165deg,#090b10,#040406)]" />
+      <div className="noise absolute inset-0 opacity-[0.14]" />
 
-      {/* soft film grain feel */}
-      <div className="noise absolute inset-0 opacity-[0.18]" />
-
-      {/* diagonal slash — ReadyMag energy */}
+      {/* soft core glow */}
       <motion.div
-        className="hero-art-slash"
-        initial={{ scaleY: 0 }}
-        animate={{ scaleY: 1 }}
-        transition={{ delay: 2.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="hero-art-orb absolute top-1/2 left-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full"
+        animate={{ scale: [1, 1.08, 1], opacity: [0.55, 0.85, 0.55] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* outer frame */}
-      <div className="absolute inset-5 border border-white/12" />
-      <div className="absolute inset-8 border border-white/[0.06]" />
-
-      {/* giant monogram */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.span
-          className="hero-mono-g font-[family-name:var(--font-display)] select-none"
-          initial={{ opacity: 0, scale: 0.88 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        >
-          G
-        </motion.span>
-      </div>
-
-      {/* overlapping word — League Design style */}
-      <motion.p
-        className="absolute top-[18%] left-[-6%] font-[family-name:var(--font-display)] text-[clamp(3.5rem,8vw,6rem)] leading-none font-bold tracking-[-0.06em] text-[#f4f1ec]/[0.92]"
-        initial={{ x: 40, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ delay: 2.5, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-      >
-        GAMES
-      </motion.p>
-
-      <motion.p
-        className="absolute right-[-4%] bottom-[22%] font-[family-name:var(--font-display)] text-[clamp(2.2rem,5vw,3.8rem)] leading-none font-bold tracking-[-0.05em] text-teal-300/80"
-        initial={{ x: -30, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ delay: 2.62, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-      >
-        FEED
-      </motion.p>
-
-      {/* floating stamp cards — Jesy Lu vibe, meaningful labels */}
+      {/* rotating word ring */}
       <motion.div
-        className="art-stamp absolute top-[12%] right-[10%]"
-        initial={{ opacity: 0, y: 16, rotate: 8 }}
-        animate={{ opacity: 1, y: [0, -8, 0], rotate: 8 }}
-        transition={{
-          opacity: { delay: 2.7, duration: 0.5 },
-          y: { delay: 3.2, duration: 4.2, repeat: Infinity, ease: "easeInOut" },
-        }}
-      >
-        <span>TEAM</span>
-      </motion.div>
-
-      <motion.div
-        className="art-stamp absolute bottom-[14%] left-[10%]"
-        initial={{ opacity: 0, y: 16, rotate: -7 }}
-        animate={{ opacity: 1, y: [0, 7, 0], rotate: -7 }}
-        transition={{
-          opacity: { delay: 2.8, duration: 0.5 },
-          y: { delay: 3.4, duration: 5, repeat: Infinity, ease: "easeInOut" },
-        }}
-      >
-        <span>NOTES</span>
-      </motion.div>
-
-      {/* orbit accent */}
-      <motion.div
-        className="absolute top-6 right-6 h-16 w-16"
+        className="absolute top-1/2 left-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2"
         animate={{ rotate: 360 }}
-        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
+        aria-hidden
       >
-        <div className="orbit-ring" />
-        <span className="orbit-dot" />
+        <svg viewBox="0 0 100 100" className="h-full w-full overflow-visible">
+          <defs>
+            <path
+              id="hero-ring"
+              d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"
+              fill="none"
+            />
+          </defs>
+          <text className="fill-teal-300/55 font-[family-name:var(--font-mono)] text-[4.2px] tracking-[0.55em] uppercase">
+            <textPath href="#hero-ring">
+              {RING.join("  ·  ")}  ·  {RING.join("  ·  ")}
+            </textPath>
+          </text>
+        </svg>
       </motion.div>
 
-      {/* bottom caption — short, real */}
+      {/* stacked note cards */}
+      {NOTES.map((note) => (
+        <motion.article
+          key={note.body}
+          className="hero-note absolute w-[210px]"
+          style={{
+            top: note.y,
+            left: note.x,
+            zIndex: note.z,
+            rotate: note.rot,
+          }}
+          initial={{ opacity: 0, y: 28, scale: 0.94 }}
+          animate={{
+            opacity: 1,
+            y: [0, note.z === 3 ? -10 : 8, 0],
+            scale: 1,
+          }}
+          transition={{
+            opacity: { delay: note.delay, duration: 0.55 },
+            scale: { delay: note.delay, duration: 0.55 },
+            y: {
+              delay: note.delay + 0.4,
+              duration: 4.8 + note.z * 0.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+          }}
+        >
+          <div className="flex items-center justify-between gap-2">
+            <span className="font-[family-name:var(--font-mono)] text-[9px] tracking-[0.2em] text-zinc-500 uppercase">
+              {note.from}
+            </span>
+            <span className="rounded-full border border-teal-300/25 bg-teal-300/10 px-2 py-0.5 text-[10px] text-teal-200/90">
+              {note.vibe}
+            </span>
+          </div>
+          <p className="mt-3 font-[family-name:var(--font-display)] text-[1.05rem] leading-snug tracking-[-0.02em] text-[#f4f1ec]">
+            {note.body}
+          </p>
+          <div className="mt-4 flex gap-1">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span
+                key={i}
+                className={`h-1.5 w-1.5 rounded-full ${i < 4 ? "bg-amber-300/80" : "bg-white/15"}`}
+              />
+            ))}
+          </div>
+        </motion.article>
+      ))}
+
       <motion.p
-        className="absolute right-8 bottom-7 left-8 font-[family-name:var(--font-mono)] text-[10px] tracking-[0.28em] text-zinc-500 uppercase"
+        className="absolute right-6 bottom-6 left-6 text-center font-[family-name:var(--font-mono)] text-[10px] tracking-[0.28em] text-zinc-500 uppercase"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.9 }}
+        transition={{ delay: 2.85 }}
       >
-        for Games · from the team
+        notes for Games
       </motion.p>
     </div>
   );
