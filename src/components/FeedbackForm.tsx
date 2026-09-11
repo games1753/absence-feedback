@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MISS_LEVELS, WORK_AGAIN, WORK_VIBES } from "@/lib/constants";
 import type { Feedback, WorkVibe } from "@/lib/types";
+import { ParallaxSection } from "@/components/ParallaxSection";
 
 type Props = {
   onCreated: (items: Feedback[]) => void;
@@ -59,6 +60,7 @@ export function FeedbackForm({ onCreated }: Props) {
   };
 
   return (
+    <ParallaxSection speed={50}>
     <section id="write" className="scroll-mt-24 px-5 py-20 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-3xl">
         <motion.div
@@ -243,5 +245,6 @@ export function FeedbackForm({ onCreated }: Props) {
         </AnimatePresence>
       </div>
     </section>
+    </ParallaxSection>
   );
 }

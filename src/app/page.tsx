@@ -5,6 +5,7 @@ import { CosmicBackground } from "@/components/CosmicBackground";
 import { Hero } from "@/components/Hero";
 import { FeedbackForm } from "@/components/FeedbackForm";
 import { FeedbackWall, SummaryPanel } from "@/components/FeedbackWall";
+import { ParallaxSection } from "@/components/ParallaxSection";
 import type { Feedback, FeedbackSummary } from "@/lib/types";
 
 const emptySummary: FeedbackSummary = {
@@ -88,8 +89,16 @@ export default function Home() {
           </div>
         </div>
         <FeedbackForm onCreated={onCreated} />
-        {!loading && <SummaryPanel summary={summary} />}
-        {!loading && <FeedbackWall items={items} />}
+        {!loading && (
+          <ParallaxSection speed={60}>
+            <SummaryPanel summary={summary} />
+          </ParallaxSection>
+        )}
+        {!loading && (
+          <ParallaxSection speed={90}>
+            <FeedbackWall items={items} />
+          </ParallaxSection>
+        )}
         {loading && (
           <p className="px-5 py-20 text-center text-zinc-500 sm:px-8">
             กำลังโหลด...

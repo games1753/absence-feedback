@@ -38,6 +38,20 @@ body {
   animation: brand-shine 8s ease-in-out infinite;
 }
 
+.brand-word,
+.brand-letter {
+  background: linear-gradient(120deg, #f4f1ec 15%, #5eead4 50%, #fbbf24 90%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: brand-shine 8s ease-in-out infinite;
+}
+
+.brand-letter {
+  animation-duration: 5.5s;
+}
+
 @keyframes brand-shine {
   0%,
   100% {
@@ -164,13 +178,49 @@ body {
 
 .hero-glow {
   position: absolute;
-  left: 10%;
-  bottom: 18%;
-  width: min(70vw, 520px);
-  height: min(40vw, 280px);
-  background: radial-gradient(ellipse, rgba(94, 234, 212, 0.18), transparent 70%);
+  left: 8%;
+  bottom: 16%;
+  width: min(70vw, 560px);
+  height: min(42vw, 300px);
+  background: radial-gradient(ellipse, rgba(94, 234, 212, 0.2), transparent 70%);
   filter: blur(20px);
   pointer-events: none;
+}
+
+.hero-panel {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    160deg,
+    rgba(18, 22, 28, 0.85),
+    rgba(8, 10, 14, 0.72)
+  );
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.float-tag {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  background: rgba(5, 5, 7, 0.65);
+  color: #99f6e4;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  color: #a1a1aa;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  cursor: default;
+  transition: border-color 0.2s ease;
 }
 
 .orbit-ring {

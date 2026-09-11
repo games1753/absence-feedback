@@ -1,10 +1,22 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 export function CosmicBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { scrollYProgress } = useScroll();
+  const smooth = useSpring(scrollYProgress, { stiffness: 70, damping: 30 });
+  const layerSlow = useTransform(smooth, [0, 1], [0, -200]);
+  const layerMid = useTransform(smooth, [0, 1], [0, -420]);
+  const layerFast = useTransform(smooth, [0, 1], [0, -700]);
+  const gridY = useTransform(smooth, [0, 1], [0, 300]);
+  const rotateGrid = useTransform(smooth, [0, 1], [0, 8]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -17,22 +29,22 @@ export function CosmicBackground() {
     let h = 0;
     let t = 0;
 
-    const particles = Array.from({ length: 120 }, () => ({
+    const particles = Array.from({ length: 140 }, () => ({
       x: Math.random(),
       y: Math.random(),
       r: Math.random() * 2.2 + 0.3,
-      vx: (Math.random() - 0.5) * 0.00045,
-      vy: (Math.random() - 0.5) * 0.00055,
+      vx: (Math.random() - 0.5) * 0.0005,
+      vy: (Math.random() - 0.5) * 0.0006,
       a: Math.random() * 0.55 + 0.12,
       hue: Math.random() > 0.65 ? "amber" : "teal",
     }));
 
-    const meteors = Array.from({ length: 4 }, (_, i) => ({
+    const meteors = Array.from({ length: 5 }, (_, i) => ({
       x: Math.random(),
       y: Math.random() * 0.4,
       len: 0.08 + Math.random() * 0.12,
       speed: 0.004 + Math.random() * 0.006,
-      delay: i * 90,
+      delay: i * 70,
       life: 0,
     }));
 
@@ -51,7 +63,6 @@ export function CosmicBackground() {
       t += 1;
       ctx.clearRect(0, 0, w, h);
 
-      // soft connecting lines between nearby particles
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const a = particles[i];
@@ -59,8 +70,8 @@ export function CosmicBackground() {
           const dx = (a.x - b.x) * w;
           const dy = (a.y - b.y) * h;
           const dist = Math.hypot(dx, dy);
-          if (dist < 120) {
-            const alpha = (1 - dist / 120) * 0.12;
+          if (dist < 130) {
+            const alpha = (1 - dist / 130) * 0.14;
             ctx.strokeStyle = `rgba(94, 234, 212, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
@@ -97,7 +108,8 @@ export function CosmicBackground() {
           m.life = 0;
           m.delay = t + 80 + Math.random() * 200;
         }
-        const alpha = Math.min(0.7, m.life / 20) * (1 - Math.max(0, (m.life - 40) / 40));
+        const alpha =
+          Math.min(0.7, m.life / 20) * (1 - Math.max(0, (m.life - 40) / 40));
         const x = m.x * w;
         const y = m.y * h;
         const grad = ctx.createLinearGradient(
@@ -131,61 +143,74 @@ export function CosmicBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden>
       <div className="absolute inset-0 bg-[#050507]" />
-      <div className="orb orb-a" />
-      <div className="orb orb-b" />
-      <div className="orb orb-c" />
-      <div className="orb orb-d" />
+
+      <motion.div style={{ y: layerSlow }} className="absolute inset-[-20%]">
+        <div className="orb orb-a" />
+        <div className="orb orb-c" />
+      </motion.div>
+
+      <motion.div style={{ y: layerMid }} className="absolute inset-[-20%]">
+        <div className="orb orb-b" />
+        <div className="orb orb-d" />
+      </motion.div>
+
+      <motion.div
+        className="grid-move absolute inset-[-30%] opacity-[0.22]"
+        style={{ y: gridY, rotate: rotateGrid }}
+      />
+
       <div className="scanlines absolute inset-0" />
-      <div className="grid-move absolute inset-0 opacity-[0.18]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050507_72%)]" />
       <div className="noise absolute inset-0 opacity-[0.14]" />
       <canvas ref={canvasRef} className="absolute inset-0" />
 
-      {[0, 1, 2, 3].map((i) => (
-        <motion.div
-          key={i}
-          className="ring-pulse"
-          style={{
-            width: `${28 + i * 16}vw`,
-            height: `${28 + i * 16}vw`,
-            top: "42%",
-            left: "50%",
-          }}
-          animate={{
-            scale: [1, 1.08, 1],
-            opacity: [0.08, 0.2, 0.08],
-            rotate: [0, i % 2 === 0 ? 20 : -20],
-          }}
-          transition={{
-            duration: 10 + i * 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.6,
-          }}
-        />
-      ))}
+      <motion.div style={{ y: layerFast }} className="absolute inset-0">
+        {[0, 1, 2, 3, 4].map((i) => (
+          <motion.div
+            key={i}
+            className="ring-pulse"
+            style={{
+              width: `${22 + i * 14}vw`,
+              height: `${22 + i * 14}vw`,
+              top: "45%",
+              left: "55%",
+            }}
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.06, 0.18, 0.06],
+              rotate: [0, i % 2 === 0 ? 25 : -25],
+            }}
+            transition={{
+              duration: 9 + i * 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5,
+            }}
+          />
+        ))}
 
-      {Array.from({ length: 8 }).map((_, i) => (
-        <motion.span
-          key={`float-${i}`}
-          className="float-speck"
-          style={{
-            left: `${8 + i * 11}%`,
-            top: `${15 + ((i * 17) % 70)}%`,
-          }}
-          animate={{
-            y: [0, -24 - i * 3, 0],
-            x: [0, i % 2 === 0 ? 12 : -10, 0],
-            opacity: [0.15, 0.55, 0.15],
-          }}
-          transition={{
-            duration: 5 + i * 0.7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.35,
-          }}
-        />
-      ))}
+        {Array.from({ length: 12 }).map((_, i) => (
+          <motion.span
+            key={`float-${i}`}
+            className="float-speck"
+            style={{
+              left: `${5 + i * 8}%`,
+              top: `${10 + ((i * 19) % 75)}%`,
+            }}
+            animate={{
+              y: [0, -30 - i * 2, 0],
+              x: [0, i % 2 === 0 ? 16 : -14, 0],
+              opacity: [0.12, 0.6, 0.12],
+            }}
+            transition={{
+              duration: 4.5 + i * 0.55,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.25,
+            }}
+          />
+        ))}
+      </motion.div>
     </div>
   );
 }
