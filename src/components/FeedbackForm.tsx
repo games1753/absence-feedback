@@ -69,7 +69,7 @@ export function FeedbackForm({ onCreated }: Props) {
           index="01"
           eyebrow="drop a note"
           title="เขียนถึง Games"
-          desc="ใส่ชื่อหรือไม่ใส่ก็ได้ — สบายๆ"
+          desc="คนธรรมดาคนนึง — ไม่ต้องยกยอ สบายๆ"
         />
 
         <div className="form-shell">
@@ -118,7 +118,7 @@ export function FeedbackForm({ onCreated }: Props) {
 
               <fieldset>
                 <legend className="field-label">
-                  ขาดผมไปจะลำบากระดับไหน?
+                  Games หายไปแล้วทีมเป็นไงบ้าง?
                 </legend>
                 <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-5">
                   {MISS_LEVELS.map((item, i) => {
@@ -163,7 +163,7 @@ export function FeedbackForm({ onCreated }: Props) {
               </fieldset>
 
               <fieldset>
-                <legend className="field-label">Vibe ตอนทำงานด้วยกัน</legend>
+                <legend className="field-label">Vibe ตอนอยู่ด้วยกัน</legend>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {WORK_VIBES.map((item, i) => {
                     const active = vibe === item.id;
@@ -189,12 +189,12 @@ export function FeedbackForm({ onCreated }: Props) {
               </fieldset>
 
               <label className="block">
-                <span className="field-label">สิ่งที่จะคิดถึงที่สุด</span>
+                <span className="field-label">สิ่งที่จำได้เกี่ยวกับ Games</span>
                 <input
                   className="field"
                   value={missMost}
                   onChange={(e) => setMissMost(e.target.value)}
-                  placeholder="เช่น เสียงหัวเราะ / โค้ดรีวิวคมๆ / กาแฟตอนเช้า"
+                  placeholder="เช่น มุกเก่า / บั๊กที่ทิ้งไว้ / กาแฟหก"
                   maxLength={200}
                   required
                 />
@@ -206,14 +206,14 @@ export function FeedbackForm({ onCreated }: Props) {
                   className="field min-h-36 resize-y"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="เล่าได้เต็มที่ — คำชม คำแซว หรือคำอำลา"
+                  placeholder="แซวได้ ด่าเบาๆ ได้ — ไม่ต้องเขียนคำอำลาใหญ่โต"
                   maxLength={2000}
                   required
                 />
               </label>
 
               <fieldset>
-                <legend className="field-label">อยากร่วมงานอีกไหม?</legend>
+                <legend className="field-label">ถ้าต้องทำงานด้วยอีก โอเคไหม?</legend>
                 <div className="mt-4 grid grid-cols-5 gap-2">
                   {WORK_AGAIN.map((item, i) => {
                     const active = workAgain === item.level;

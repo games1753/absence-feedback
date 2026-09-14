@@ -36,7 +36,7 @@ export function SummaryPanel({ summary }: Props) {
           index="02"
           eyebrow="pulse check"
           title="Summary"
-          desc={`กราฟวงกลมจากทุกหัวข้อที่ให้เลือก · ทั้งหมด ${summary.total} รายการ`}
+          desc={`สรุปคำตอบแบบไม่จริงจัง · ทั้งหมด ${summary.total} รายการ`}
         />
 
         <div className="grid gap-5">
@@ -46,7 +46,7 @@ export function SummaryPanel({ summary }: Props) {
             viewport={{ once: true }}
           >
             <DonutChart
-              title="ขาดไปจะลำบากระดับไหน"
+              title="Games หายไปแล้วทีมเป็นไง"
               subtitle={
                 summary.total
                   ? `เฉลี่ย ${summary.avgMissLevel.toFixed(1)} / 5`
@@ -65,7 +65,7 @@ export function SummaryPanel({ summary }: Props) {
             transition={{ delay: 0.06 }}
           >
             <DonutChart
-              title="Vibe ตอนทำงานด้วยกัน"
+              title="Vibe ตอนอยู่ด้วยกัน"
               subtitle="สัดส่วนแต่ละ vibe"
               slices={vibeSlices}
               centerValue={String(summary.total)}
@@ -80,7 +80,7 @@ export function SummaryPanel({ summary }: Props) {
             transition={{ delay: 0.12 }}
           >
             <DonutChart
-              title="อยากร่วมงานอีกไหม"
+              title="ทำงานด้วยอีก โอเคไหม"
               subtitle={
                 summary.total
                   ? `เฉลี่ย ${summary.avgWorkAgain.toFixed(1)} / 5`
@@ -108,12 +108,12 @@ export function FeedbackWall({ items }: WallProps) {
         <SectionHead
           index="03"
           eyebrow="the board"
-          title="Feedback ทั้งหมด"
-          desc="ใครก็เข้ามาอ่านได้"
+          title="โน้ตทั้งหมด"
+          desc="กองแซวเปิดอ่านได้ — ไม่ใช่บอร์ดคำอำลา"
         />
 
         {items.length === 0 ? (
-          <p className="mt-4 text-zinc-500">ยังไม่มี feedback — เป็นคนแรกสิ</p>
+          <p className="mt-4 text-zinc-500">ยังว่าง — แซวก่อนใครก็ได้</p>
         ) : (
           <div className="columns-1 gap-4 sm:columns-2">
             {items.map((item, index) => {
@@ -130,7 +130,7 @@ export function FeedbackWall({ items }: WallProps) {
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="font-[family-name:var(--font-thai)] text-lg font-semibold tracking-tight text-[#f4f1ec]">
+                      <p className="font-[family-name:var(--font-display)] text-lg text-[#f4f1ec]">
                         {item.name || "ไม่ระบุชื่อ"}
                       </p>
                       <p className="mt-1 text-xs text-zinc-500">
@@ -147,12 +147,12 @@ export function FeedbackWall({ items }: WallProps) {
                       LV {item.missLevel}
                     </span>
                   </div>
-                  <p className="mt-4 font-[family-name:var(--font-thai)] text-base leading-relaxed font-medium text-[#ece8e2]">
+                  <p className="mt-4 text-[15px] leading-relaxed text-zinc-300">
                     {item.message}
                   </p>
                   <div className="mt-5 flex flex-wrap gap-2 border-t border-white/8 pt-4 text-xs text-zinc-500">
                     <span>
-                      คิดถึง:{" "}
+                      จำได้:{" "}
                       <span className="text-zinc-300">{item.missMost}</span>
                     </span>
                     <span className="text-zinc-700">·</span>
@@ -162,7 +162,7 @@ export function FeedbackWall({ items }: WallProps) {
                     </span>
                     <span className="text-zinc-700">·</span>
                     <span>
-                      ร่วมงานอีก:{" "}
+                      ทำงานด้วยอีก:{" "}
                       <span className="text-zinc-300">{item.workAgain}/5</span>
                     </span>
                   </div>

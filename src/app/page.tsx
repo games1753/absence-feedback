@@ -158,7 +158,7 @@ export default function Home() {
           FeedBack Games
         </p>
         <p className="mt-3 text-xs tracking-wide text-zinc-600">
-          จากทีม ถึง Games
+          บอร์ดแซว · ไม่ใช่คำอำลา
         </p>
       </footer>
     </SmoothScroll>

@@ -74,7 +74,7 @@ export function Hero({ onWrite, onWall }: Props) {
                 animate={{ y: "0%" }}
                 transition={{ delay: 2.05, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
               >
-                from the team · to Games
+                บอร์ดแซว Games · ไม่จริงจัง
               </motion.p>
             </div>
           </div>
@@ -109,7 +109,7 @@ export function Hero({ onWrite, onWall }: Props) {
               animate={{ y: "0%", opacity: 1 }}
               transition={{ delay: 2.35, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              เขียนเล่นๆ ได้ แซวได้ ชมได้ — ทีมอ่านด้วยกันได้หมด
+              เขียนเล่นๆ ได้ แซวได้ ด่าเบาๆ ได้ — ไม่ต้องยกยอ คนนี้ไม่ได้สำคัญขนาดนั้น
             </motion.p>
           </div>
 
@@ -120,7 +120,7 @@ export function Hero({ onWrite, onWall }: Props) {
             transition={{ delay: 2.45, duration: 0.6 }}
           >
             <MagneticButton onClick={onWrite} className="btn-primary">
-              เขียน Feedback
+              เขียนโน้ต
             </MagneticButton>
             <MagneticButton onClick={onWall} className="btn-ghost">
               ดูทั้งหมด
@@ -133,7 +133,7 @@ export function Hero({ onWrite, onWall }: Props) {
             animate={{ opacity: 1 }}
             transition={{ delay: 2.55 }}
           >
-            {["ชื่อไม่บังคับ", "5 ระดับ", "Summary", "เปิดอ่านได้"].map((item) => (
+            {["ชื่อไม่บังคับ", "แซวได้", "ไม่ต้องชม", "เปิดอ่านได้"].map((item) => (
               <span key={item} className="hero-chip" data-cursor="hover">
                 {item}
               </span>

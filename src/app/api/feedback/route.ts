@@ -28,19 +28,19 @@ export async function POST(request: Request) {
     const name = typeof body.name === "string" ? body.name : undefined;
 
     if (![1, 2, 3, 4, 5].includes(missLevel)) {
-      return NextResponse.json({ error: "เลือกระดับความลำบาก 1–5" }, { status: 400 });
+      return NextResponse.json({ error: "เลือกระดับ 1–5 ก่อนนะ" }, { status: 400 });
     }
     if (![1, 2, 3, 4, 5].includes(workAgain)) {
-      return NextResponse.json({ error: "เลือกคะแนนอยากร่วมงานอีก" }, { status: 400 });
+      return NextResponse.json({ error: "เลือกคะแนนทำงานด้วยอีก" }, { status: 400 });
     }
     if (!VIBES.includes(vibe)) {
-      return NextResponse.json({ error: "เลือก vibe การทำงาน" }, { status: 400 });
+      return NextResponse.json({ error: "เลือก vibe ก่อนนะ" }, { status: 400 });
     }
     if (message.length < 3) {
       return NextResponse.json({ error: "เขียนข้อความสักหน่อยนะ" }, { status: 400 });
     }
     if (missMost.length < 2) {
-      return NextResponse.json({ error: "บอกสิ่งที่จะคิดถึงหน่อย" }, { status: 400 });
+      return NextResponse.json({ error: "บอกสิ่งที่จำได้นิดหน่อย" }, { status: 400 });
     }
 
     const entry = await addFeedback({
