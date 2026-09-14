@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 
-/** Stacked glass notes — casual roast previews, not praise */
+/** Stacked glass notes — Apple / Arc card energy, real message previews */
 const NOTES = [
   {
-    from: "ใครสักคน",
-    vibe: "วุ่นวาย",
-    body: "หายไปก็นานแล้วนะ เอ๊ะ หรือเปล่า",
+    from: "ทีม",
+    vibe: "พอไหว",
+    body: "หายไปแล้วมึงกินข้าวกี่โมง",
     rot: -11,
     y: "8%",
     x: "10%",
@@ -16,8 +16,8 @@ const NOTES = [
   },
   {
     from: "anonymous",
-    vibe: "ชิลเกิน",
-    body: "โค้ดก็งง คนก็งง ครบเซ็ต",
+    vibe: "ชิลล์",
+    body: "อย่าลืมคืนที่ชาร์จด้วย",
     rot: 7,
     y: "28%",
     x: "28%",
@@ -26,8 +26,8 @@ const NOTES = [
   },
   {
     from: "เพื่อน",
-    vibe: "จุกๆ",
-    body: "กลับมาก็ได้ ไม่ได้คิดถึงขนาดนั้น",
+    vibe: "คมเป๊ะ",
+    body: "กลับมาแล้วอย่าคุยยาวเกิน",
     rot: -4,
     y: "48%",
     x: "6%",
@@ -36,7 +36,7 @@ const NOTES = [
   },
 ];
 
-const RING = ["ROAST", "NOTE", "AGAIN", "CHILL", "GAMES", "OK"];
+const RING = ["MISS", "VIBE", "AGAIN", "NOTES", "TEAM", "GAMES"];
 
 export function HeroArt() {
   return (
@@ -44,12 +44,14 @@ export function HeroArt() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_35%,rgba(94,234,212,0.2),transparent_42%),radial-gradient(circle_at_20%_80%,rgba(251,191,36,0.12),transparent_40%),linear-gradient(165deg,#090b10,#040406)]" />
       <div className="noise absolute inset-0 opacity-[0.14]" />
 
+      {/* soft core glow */}
       <motion.div
         className="hero-art-orb absolute top-1/2 left-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full"
         animate={{ scale: [1, 1.08, 1], opacity: [0.55, 0.85, 0.55] }}
         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
       />
 
+      {/* rotating word ring */}
       <motion.div
         className="absolute top-1/2 left-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2"
         animate={{ rotate: 360 }}
@@ -72,6 +74,7 @@ export function HeroArt() {
         </svg>
       </motion.div>
 
+      {/* stacked note cards */}
       {NOTES.map((note) => (
         <motion.article
           key={note.body}
@@ -127,7 +130,7 @@ export function HeroArt() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2.85 }}
       >
-        just notes · not a tribute
+        notes for Games
       </motion.p>
     </div>
   );
