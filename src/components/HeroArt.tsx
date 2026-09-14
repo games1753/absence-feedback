@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 const NOTES = [
   {
     from: "ทีม",
-    vibe: "ไฟลุก",
-    body: "ขาดแล้วประชุมเงียบทันที",
+    vibe: "พอไหว",
+    body: "หายไปแล้วใครจะเปิด Zoom ให้",
     rot: -11,
     y: "8%",
     x: "10%",
@@ -16,8 +16,8 @@ const NOTES = [
   },
   {
     from: "anonymous",
-    vibe: "ลื่นไหล",
-    body: "ทำงานด้วยแล้วรู้สึกเบา",
+    vibe: "ชิล",
+    body: "แซวได้ ไม่โกรธ — นั่นก็ดีแล้ว",
     rot: 7,
     y: "28%",
     x: "28%",
@@ -26,8 +26,8 @@ const NOTES = [
   },
   {
     from: "เพื่อน",
-    vibe: "หายาก",
-    body: "อยากร่วมทีมอีกรอบแน่นอน",
+    vibe: "ลื่นไหล",
+    body: "อย่าลืมทักทายบ้างนะ 555",
     rot: -4,
     y: "48%",
     x: "6%",
@@ -78,7 +78,7 @@ export function HeroArt() {
       {NOTES.map((note) => (
         <motion.article
           key={note.body}
-          className="hero-note absolute w-[232px]"
+          className="hero-note absolute w-[210px]"
           style={{
             top: note.y,
             left: note.x,
@@ -106,18 +106,18 @@ export function HeroArt() {
             <span className="font-[family-name:var(--font-mono)] text-[9px] tracking-[0.2em] text-zinc-500 uppercase">
               {note.from}
             </span>
-            <span className="font-[family-name:var(--font-thai)] rounded-full border border-teal-300/25 bg-teal-300/10 px-2 py-0.5 text-[11px] font-medium text-teal-200/90">
+            <span className="rounded-full border border-teal-300/25 bg-teal-300/10 px-2 py-0.5 text-[10px] text-teal-200/90">
               {note.vibe}
             </span>
           </div>
-          <p className="hero-note-body mt-3.5">
+          <p className="mt-3 font-[family-name:var(--font-display)] text-[1.05rem] leading-snug tracking-[-0.02em] text-[#f4f1ec]">
             {note.body}
           </p>
-          <div className="mt-5 flex gap-1.5">
+          <div className="mt-4 flex gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
               <span
                 key={i}
-                className={`h-1.5 w-1.5 rounded-full ${i < 4 ? "bg-amber-300/90" : "bg-white/15"}`}
+                className={`h-1.5 w-1.5 rounded-full ${i < 4 ? "bg-amber-300/80" : "bg-white/15"}`}
               />
             ))}
           </div>
