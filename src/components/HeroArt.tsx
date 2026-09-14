@@ -78,7 +78,7 @@ export function HeroArt() {
       {NOTES.map((note) => (
         <motion.article
           key={note.body}
-          className="hero-note absolute w-[210px]"
+          className="hero-note absolute w-[232px]"
           style={{
             top: note.y,
             left: note.x,
@@ -106,18 +106,18 @@ export function HeroArt() {
             <span className="font-[family-name:var(--font-mono)] text-[9px] tracking-[0.2em] text-zinc-500 uppercase">
               {note.from}
             </span>
-            <span className="rounded-full border border-teal-300/25 bg-teal-300/10 px-2 py-0.5 text-[10px] text-teal-200/90">
+            <span className="font-[family-name:var(--font-thai)] rounded-full border border-teal-300/25 bg-teal-300/10 px-2 py-0.5 text-[11px] font-medium text-teal-200/90">
               {note.vibe}
             </span>
           </div>
-          <p className="mt-3 font-[family-name:var(--font-display)] text-[1.05rem] leading-snug tracking-[-0.02em] text-[#f4f1ec]">
+          <p className="hero-note-body mt-3.5">
             {note.body}
           </p>
-          <div className="mt-4 flex gap-1">
+          <div className="mt-5 flex gap-1.5">
             {Array.from({ length: 5 }).map((_, i) => (
               <span
                 key={i}
-                className={`h-1.5 w-1.5 rounded-full ${i < 4 ? "bg-amber-300/80" : "bg-white/15"}`}
+                className={`h-1.5 w-1.5 rounded-full ${i < 4 ? "bg-amber-300/90" : "bg-white/15"}`}
               />
             ))}
           </div>

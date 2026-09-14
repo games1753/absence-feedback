@@ -130,7 +130,7 @@ export function FeedbackWall({ items }: WallProps) {
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="font-[family-name:var(--font-display)] text-lg text-[#f4f1ec]">
+                      <p className="font-[family-name:var(--font-thai)] text-lg font-semibold tracking-tight text-[#f4f1ec]">
                         {item.name || "ไม่ระบุชื่อ"}
                       </p>
                       <p className="mt-1 text-xs text-zinc-500">
@@ -147,7 +147,7 @@ export function FeedbackWall({ items }: WallProps) {
                       LV {item.missLevel}
                     </span>
                   </div>
-                  <p className="mt-4 text-[15px] leading-relaxed text-zinc-300">
+                  <p className="mt-4 font-[family-name:var(--font-thai)] text-base leading-relaxed font-medium text-[#ece8e2]">
                     {item.message}
                   </p>
                   <div className="mt-5 flex flex-wrap gap-2 border-t border-white/8 pt-4 text-xs text-zinc-500">

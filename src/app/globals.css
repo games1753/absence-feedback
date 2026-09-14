@@ -150,7 +150,7 @@ body {
 }
 
 .hero-note {
-  padding: 1rem 1.05rem 1.1rem;
+  padding: 1.1rem 1.15rem 1.2rem;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 1rem;
   background: linear-gradient(
@@ -164,6 +164,16 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+}
+
+.hero-note-body {
+  font-family: var(--font-thai), var(--font-sans), sans-serif;
+  font-size: 1.28rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #f7f4ef;
+  text-shadow: 0 1px 18px rgba(94, 234, 212, 0.18);
 }
 
 .glass-nav {
